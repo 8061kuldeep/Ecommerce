@@ -1,0 +1,63 @@
+<app-header></app-header>
+<p-confirmDialog
+  header="Confirmation"
+  icon="pi pi-exclamation-triangle"
+></p-confirmDialog>
+<p-toast></p-toast>
+<div class="container">
+  <table class="table table-dark table-striped">
+    <tr>
+      <td>productid</td>
+      <td>product name</td>
+      <td>unit price</td>
+      <td>quntity</td>
+      <td>total</td>
+    </tr>
+    <tr *ngFor="let i of cartitem; index as ind">
+      <td>{{ i.productid }}</td>
+      <td>{{ i.name }}</td>
+      <td>{{ i.price }}</td>
+      <td>{{ i.quantity }}</td>
+      <!-- <td>{{ i.totalprice }}</td> -->
+      <td>
+        <button type="button" class="btn btn-success " (click)="quntup(ind)">
+          +</button
+        ><button
+          type="button"
+          class="btn btn-success ml-2"
+          (click)="quntdown(ind)"
+        >
+          -
+        </button>
+      </td>
+      <td>
+        <button
+          type="button"
+          class="btn btn-danger"
+          pButton
+          icon="pi pi-check"
+          label="Confirm"
+          (click)="confirm(ind)"
+        >
+          <i class="pi pi-trash" style="font-size: 2em"></i>
+        </button>
+        <!-- <button
+          type="text"
+          (click)="confirm()"
+          pButton
+          icon="pi pi-check"
+          label="Confirm"
+        ></button> -->
+      </td>
+      <td>
+        <!-- <button type="button" class="btn btn-warning" (click)="total(ind)">
+          total
+        </button> -->
+      </td>
+    </tr>
+  </table>
+
+  <button type="button" class="btn  btn-warning" (click)="checkout()">
+    checkout
+  </button>
+</div>

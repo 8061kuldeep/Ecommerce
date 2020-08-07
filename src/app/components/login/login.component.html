@@ -1,0 +1,56 @@
+<app-header></app-header>
+
+<div class="container ">
+  <p-toast position="top-center "></p-toast>
+  <h3 class="mt-5 text-primary">Login form</h3>
+  <form
+    [formGroup]="myform"
+    class="needs-validation mt-3"
+    (ngSubmit)="logintest()"
+  >
+    <div class="form-group">
+      <label for="email"><b class="text-danger">*</b>Email:</label>
+      <input
+        type="email"
+        [(ngModel)]="text"
+        class="form-control"
+        #email
+        placeholder="Enter Email"
+        formControlName="email"
+        required
+      />
+
+      <p *ngIf="myform.get('email').touched" class="text-danger">
+        <span *ngIf="myform.get('email').hasError('required')">required</span>
+      </p>
+
+      <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">Please fill out this field.</div>
+    </div>
+    <div class="form-group">
+      <label for="pwd"><b class="text-danger">*</b>Password:</label>
+      <input
+        type="password"
+        class="form-control"
+        #pwd
+        placeholder="Enter Password"
+        formControlName="pwd"
+        required
+      />
+
+      <p *ngIf="myform.get('pwd').touched" class="text-danger">
+        <span *ngIf="myform.get('pwd').hasError('required')">required</span>
+      </p>
+      <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">Please fill out this field.</div>
+    </div>
+
+    <button type="submit" [disabled]="!myform.valid" class="btn btn-primary">
+      Login
+    </button>
+
+  
+  </form>
+
+  <h3 class="text-danger">{{ message }}</h3>
+</div>

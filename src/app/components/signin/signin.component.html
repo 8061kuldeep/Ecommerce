@@ -1,0 +1,68 @@
+<app-header></app-header>
+<div class="container">
+  <h3 class="mt-5 text-primary">Signup form</h3>
+  <form [formGroup]="newForm" class="needs-validation mt-3">
+    <div class="form-group">
+      <label for="fname"><b class="text-danger">*</b>FirstName:</label>
+      <input
+        type="text"
+        class="form-control"
+        #fname
+        placeholder="Enter FirstName"
+        formControlName="fname"
+        required
+      />
+      <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">Please fill out this field.</div>
+    </div>
+    <div class="form-group">
+      <label for="lname"><b class="text-danger">*</b>LastName:</label>
+      <input
+        type="text"
+        class="form-control"
+        #lname
+        placeholder="Enter LastName"
+        formControlName="lname"
+        required
+      />
+      <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">Please fill out this field.</div>
+    </div>
+    <div class="form-group">
+      <label for="email"><b class="text-danger">*</b>Email: </label>
+      <input
+        type="email"
+        class="form-control"
+        #email
+        placeholder="Enter Email"
+        formControlName="email"
+        required
+      />
+      <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">Please fill out this field.</div>
+    </div>
+    <div class="form-group">
+      <label for="pwd"><b class="text-danger">*</b>Password:</label>
+      <input
+        type="password"
+        class="form-control"
+        #pwd
+        placeholder="Enter Password"
+        formControlName="pwd"
+        required
+      />
+      <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">Please fill out this field.</div>
+    </div>
+
+    <button
+      type="submit"
+      [disabled]="!newForm.valid"
+      (click)="check(fname.value, lname.value, email.value, pwd.value)"
+      class="btn btn-primary"
+    >
+      Submit
+    </button>
+  </form>
+  <!-- <h3 class="text-danger">{{ error }}</h3> -->
+</div>

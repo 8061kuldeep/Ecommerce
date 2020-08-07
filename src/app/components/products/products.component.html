@@ -1,0 +1,42 @@
+<app-header [myinput]="l"></app-header>
+<!-- <app-minicart [myinput]="inputmsg" [quant]="l"></app-minicart> -->
+<div *ngIf="service.logout()" class=" m-3 bg-primary">
+  <h3 class="text-center text-light">
+    Wellcome <span class="text-warning">{{ name }}</span>
+  </h3>
+</div>
+<h1 class="text-center">Products</h1>
+
+<div class="container" *ngFor="let i of products">
+  <div class="card col-md-4 p-2 float-left">
+    <img src="{{ i.img }}" alt="Avatar" style="width:100%" />
+    <div class="container">
+      <h4>
+        <b> {{ i.name }}</b>
+        <!-- <input
+          type="text"
+          class="border-0 text-danger font-weight-bold"
+          value="{{ products[0].name }}"
+        /> -->
+      </h4>
+      <p>{{ i.price | currency: "USD":true }}</p>
+      <button
+        type="button"
+        class="btn btn-success"
+        (click)="carttest(i.productid, i)"
+        *ngIf="!i.status"
+      >
+        add to cart
+      </button>
+      <button
+        type="button"
+        class="btn btn-primary"
+        disabled
+        (click)="carttest(i.productid, i)"
+        *ngIf="i.status && service.logout()"
+      >
+        added to cart
+      </button>
+    </div>
+  </div>
+</div>
